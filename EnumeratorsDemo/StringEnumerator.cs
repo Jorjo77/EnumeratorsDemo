@@ -16,9 +16,16 @@ namespace EnumeratorsDemo
         }
         public string[] Array { get; set; }
 
-        public string Current => Array[index];
+        //public string Current => Array[index]; това е модерен запис на това долу:
+        public string Current
+        {
+            get
+            {
+                return Array[index];
+            }
+        }
 
-        object IEnumerator.Current => throw new NotImplementedException();
+        object IEnumerator.Current => Current;
 
         public void Dispose()
         {
