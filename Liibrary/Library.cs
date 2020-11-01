@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace IteratorsAndComparators
+{
+    public class Library : IEnumerable<Book>
+    {
+        public Library(params Book[] books)
+        {
+            Books = books.ToList();
+        }
+        public List<Book> Books { get; set; }
+        public IEnumerator<Book> GetEnumerator()
+        {
+            //ако искаме да имплементираме форийч най-лесно е:
+            return Books.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+}
